@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+</head>
+
+<body>
+<header>
+    <i class="fa-solid fa-circle-info"></i>
+    <i class="fa-regular fa-bell"></i>
+    <img src="images/profilepic.jpg">
+</header>
+<main>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#audience">Audience</a></li>
+            <li><a href="#behaviour">Behaviour</a></li>
+            <li><a href="#conversions">Conversions</a></li>
+            <li class="customizebutton"><a href="#customize">Customize</a></li>
+        </ul>
+    </nav>
+
+    <section id="mainContainer">
+     <section class="cards">
+        <div class="activeusers">
+            <h2>Active users</h2>
+            <h1>72</h1>
+            <h3>VIEW REFFERALS</h3>
+            <i class="fa-solid fa-right-long" id="viewrefferals"></i>
+        </div>
+        <div class="pageviews">
+            <h2>Page views per minutes</h2>
+            <div class="viewsperminutechart">
+                <table class="charts-css column multiple datasets-spacing-3">
+                        <tr>
+                            <td style="--size: calc( 80 / 100 )"></td>
+                            <td style="--size: calc( 35 / 100 )"></td>
+                            <td style="--size: calc( 55 / 100 )"></td>
+                            <td style="--size: calc( 75 / 100 )"></td>
+                            <td style="--size: calc( 60 / 100 )"></td>
+                            <td style="--size: calc( 55 / 100 )"></td>
+                            <td style="--size: calc( 95 / 100 )"></td>
+                            <td style="--size: calc( 10 / 100 )"></td>
+                            <td style="--size: calc( 75 / 100 )"></td>
+                            <td style="--size: calc( 30 / 100 )"></td>
+                            <td style="--size: calc( 55 / 100 )"></td>
+                            <td style="--size: calc( 15 / 100 )"></td>
+                            <td style="--size: calc( 25 / 100 )"></td>
+                            <td style="--size: calc( 65 / 100 )"></td>
+                            <td style="--size: calc( 50 / 100 )"></td>
+                            <td style="--size: calc( 45 / 100 )"></td>
+                            <td style="--size: calc( 90 / 100 )"></td>
+                            <td style="--size: calc( 30 / 100 )"></td>
+                            <td style="--size: calc( 60 / 100 )"></td>
+                            <td style="--size: calc( 85 / 100 )"></td>
+                            <td style="--size: calc( 80 / 100 )"></td>
+                            <td style="--size: calc( 55 / 100 )"></td>
+                            <td style="--size: calc( 25 / 100 )"></td>
+                            <td style="--size: calc( 40 / 100 )"></td>
+                            <td style="--size: calc( 65 / 100 )"></td>
+                            <td style="--size: calc( 50 / 100 )"></td>
+                            <td style="--size: calc( 70 / 100 )"></td>
+                            <td style="--size: calc( 85 / 100 )"></td>
+                            <td style="--size: calc( 35 / 100 )"></td>
+                            <td style="--size: calc( 60 / 100 )"></td>
+                          </tr>
+                </table>
+            </div>
+            <div class="tablerefferals">
+                <h3>VIEW REFFERALS</h3> 
+                <i class="fa-solid fa-right-long"></i>
+            </div>
+        </div>
+
+        <div class="fourcards">
+
+            <div class="onecard">
+                    <h4>Users</h4>
+
+                    <div class="up">
+                        <i class="fa-solid fa-up-long" id="upicon"></i>
+                        <h5>268%</h5>
+                    </div>
+
+                    <h1>15K</h1>
+            </div>
+
+            <div class="onecard">
+                <h4>Sessions</h4>
+                <div class="up">
+                    <i class="fa-solid fa-up-long" id="upicon2"></i>
+                    <h5>268%</h5>
+                </div>
+                <h1>17K</h1>
+            </div>
+
+            <div class="twocard">
+                <h4>Bounce Rate</h4>
+                <div class="down">
+                    <i class="fa-solid fa-down-long" id="downicon"></i>
+                    <h5>19.6%</h5>
+                </div>
+                <h1>62.57%</h1>
+            </div>
+            
+            <div class="twocard">
+                <h4>Session Duration</h4>
+                <div class="down">
+                    <i class="fa-solid fa-down-long" id="downicon2"></i>
+                    <h5>29.7%</h5>
+                </div>
+                <h1>1m 37s</h1>
+            </div>
+
+        </div>
+
+        <div class="alerts">
+            <i class="fa-solid fa-bell" id="bellicon"></i>
+            <div id="alertstext">
+                <h2>No alerts set</h2>
+                <p>Get notified when your data drastically change</p>
+            </div>
+            <button id="setalert" type="submit">Set alert</button>
+        </div>
+
+        <div class="devices">
+         <div class="devices1">
+            <h2>Devices</h2>
+            <ul>
+                <li><a href="#may">May</a></li>
+                <li><a href="#june">June</a></li>
+                <li><a href="#july">July</a></li>
+                <li><a href="#august">August</a></li>
+            </ul>
+
+            <div id="deviceusagechart">
+                <table class="charts-css bar">
+                    <p>Desktop / 36%</p>
+                    <tr>
+                        <td style="--size: 0.4"></td>
+                    </tr>
+                </table> 
+
+                <table class="charts-css bar">
+                    <p>Tablet / 16%</p>   
+                    <tr>
+                        <td style="--size: 0.2"></td>
+                    </tr>
+                </table>
+
+                <table class="charts-css bar">    
+                    <p>Mobile / 52%</p>
+                    <tr>
+                        <td style="--size: 0.6"></td>
+                    </tr>     
+                </table>
+            </div>       
+        </div>
+
+        <div class="devices2">
+            <h2>Devices</h2>
+            <i class="fa-solid fa-ellipsis-vertical" id="devices2icon"></i>
+            <ul id="devices2titles">
+                <li>Direct</li>
+                <li>Organic</li>
+                <li>Social</li>
+                <li>Refferal</li>
+                <li>Social</li>
+            </ul>
+            <ul id="devices2nrs">
+                <li>37</li>
+                <li>65</li>
+                <li>23</li>
+                <li>46</li>
+                <li>51</li>
+            </ul>
+         </div>
+        </div>
+     </section>
+
+     <section class="sidecards">
+        <div class="toppages">
+            <h2 id="toppagesh2">Top pages</h2>
+            <h2 id="visitsh2">Visits</h2>
+            <ul id="visitedpages">
+                <li>/page 1</li>
+                <li>/page 2</li>
+                <li>/page 3</li>
+                <li>/page 4</li>
+                <li>/page 5</li>
+            </ul>
+
+            <ul id="visitedpagesbynr">
+                <li>999</li>
+                <li>776</li>
+                <li>546</li>
+                <li>345</li>
+                <li>201</li>
+            </ul>
+
+        </div>
+
+        <div class="morestats">
+            <h2>More stats</h2>
+            <i class="fa-solid fa-angle-right" id="morestatsicon"></i>
+            <p>More stats</p>
+            <h1>42K</h1>
+            <p>More stats</p>
+            <h1>47.45%</h1>
+        </div>
+     </section>
+    </section>
+</main>
+</body>
+</html>
