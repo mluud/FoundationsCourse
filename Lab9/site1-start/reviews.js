@@ -54,7 +54,7 @@ nextBtn.addEventListener('click', () => {
   changeInfo(currentPersonID);
 
   if(currentPersonID==reviews.length-1)
-  nextBtn.disabled = true;
+    currentPersonID==0;
 });
 
 prevBtn.addEventListener('click', () => {
