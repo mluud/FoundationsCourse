@@ -9,7 +9,7 @@
 
 
 const mealsElement = document.querySelector("#meals");
-
+const localStorageKey = 'mealIds'
 getRandomMeal();
 
 async function getRandomMeal()
@@ -40,6 +40,42 @@ function addMeal(mealData) //need to pass an object
                                  <i class="fas fa-heart"></i>
                             </button>
                         </div>`;
-
+        const favoriteButton = meal.querySelector(".fav-btn");
+        if(favoriteButton)
+        {
+            favoriteButton.addEventListener('click',()=>{
+                if(favoriteButton.classList.contains("active"))
+                {
+                    favoriteButton.classList.remove("active");
+                    removeMealFromLocalStorage(mealData.idMeal);
+                }
+                else
+                {
+                    favoriteButton.classList.add("active");
+                    addMealToLocalStorage(mealData.idMeal);
+                }
+            })
+        }
         mealsElement.appendChild(meal);                
+    }
+
+    function addMealToLocalStorage(mealId){
+        const mealsArray = getMealsFromLocalStorage();
+        localStorage.setItem(localStorageKey, JSON.stringify([...mealsArray,mealId]));
+    }
+
+    function removeMealFromLocalStorage(mealId){
+        const mealsArray = getMealsFromLocalStorage();
+        localStorage.setItem(localStorageKey, JSON.stringify(
+            mealsArray.filter(id => id !== mealId)
+        ));
+    }
+
+    function getMealsFromLocalStorage()
+    {
+        const mealIds = JSON.parse(localStorage.getItem(localStorageKey));
+        if (mealIds === null)
+            return [];
+        else
+            return mealIds;
     }

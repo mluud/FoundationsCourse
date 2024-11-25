@@ -1,0 +1,215 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: #F9F5ED;
+    color: #535254;
+}
+
+main{
+    background-color: #F2DA8B;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 50px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+main h1{
+    font-size: 100px;
+    padding: 80px;
+}
+
+input{
+    border: none;
+    font-size: 20px;
+    background-color: #F9F5ED;
+    padding: 5px; 
+}
+
+i{
+    padding: 5px; 
+    font-size: 20px;
+}
+
+#searchBox{
+    background-color: #F9F5ED;
+    max-width: 1200px;
+    margin: auto;
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 80px;
+}
+
+nav{
+    padding: 20px;
+}
+
+nav ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+   justify-content: right;
+}
+
+nav ul li {
+    padding: 10px;
+}
+
+nav ul li a{
+    text-decoration-line: none;
+    padding: 10px;
+}
+
+nav ul li a:focus{
+    background-color: #F2DA8B;
+    border-radius: 20px;
+    color: #FFFFFF;
+}
+
+nav ul li a:hover{
+    background-color: #F2DA8B
+}
+
+
+#imageContainer img {
+    max-width: 500px;
+    margin: auto;
+}
+
+#imageContainer{
+    align-items: center;
+}
+
+.parkCards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    max-width: 700px;
+    margin: auto;
+}
+
+.previousBtn {
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.nextBtn {
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+#parkName {
+    font-size: 50px;
+}
+
+.viewAttractions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px;
+}
+
+body .viewAttractions button {
+    padding: 10px;
+}
+
+body .viewAttractions button:focus {
+    background-color: #F2DA8B;
+}
+
+h2 {
+    font-size: 40px;
+    padding: 20px;
+}
+
+.attractionInfo {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+    justify-content: space-around;
+    max-width: 700px;
+    margin: auto;
+}
+
+.oneAttractionCard {
+    background-color: #F9F5ED;
+    padding: 10px;
+    border-radius: 20px;
+    
+}
+
+.ride-img {
+    max-width: 300px;
+    margin: auto;
+    border-radius: 20px;
+}
+
+#addRating{
+    background-color: #F9F5ED;
+    padding: 20px;
+    border-radius: 20px;
+    grid-column: 3 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#allRatings {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 20px;
+}
+
+.dropbtn {
+    background-color: #F2DA8B;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+  }
+
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #dba400;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content a:hover {background-color: #ddd;}
+
+  .show {display:block;}
+
+  #viewRanking {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+
+  #highestRating {
+    padding: 20px;
+  }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<header>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="attractions.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>RATETHEPARK</title>
+    <nav>
+        <ul>
+            <li><a href="./homepage.html">home</a></li>
+            <li><a href="./parks.html">parks</a></li>
+            <li><a href="./attractions.html">attractions</a></li>
+            <li><a href="./attractionsrating.html">rating overview</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main id="allRatings">
+    <section id="viewRanking">
+        <h2>Attraction rating</h2>
+        <h3 id="highestRating">Attractions with the highest rating:</h3>
+        <h3>1.</h3>
+        <h4>Ride Name</h4>
+        <h4>Park Name</h4>
+        <div class="rating">
+            <p>Rating:</p>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+        </div>
+        <h3>2.</h3>
+        <h4>Ride Name</h4>
+        <h4>Park Name</h4>
+        <div class="rating">
+            <p>Rating:</p>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+        </div>
+        <h3>3.</h3>
+        <h4>Ride Name</h4>
+        <h4>Park Name</h4>
+        <div class="rating">
+        <p>Rating:</p>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+    </div>
+</section>
+<section id="addRating">
+    <h3><center>Rate the ride!</center></h3>
+    <p>Choose your ride:</p>
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </div>
+    <p>How did you like the ride?</p>
+        <div>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+        </div>
+        <label for="message">Add a comment!</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <button id="submit" type="submit">Submit</button>
+</section>
+</main>
+
+<footer>
+</footer>
+
+</html>
