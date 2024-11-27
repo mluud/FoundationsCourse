@@ -129,11 +129,11 @@ h2 {
 }
 
 .attractionInfo {
-    display: grid;
-    grid-template-columns: auto auto auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 20px;
     justify-content: space-around;
-    max-width: 700px;
     margin: auto;
 }
 
@@ -141,7 +141,7 @@ h2 {
     background-color: #F9F5ED;
     padding: 10px;
     border-radius: 20px;
-    
+    max-width: 300px;
 }
 
 .ride-img {
@@ -158,12 +158,27 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    max-width: 400px;
+    width: 100%;
+}
+
+#viewRanking{
+background-color: #F9F5ED;
+padding: 20px;
+border-radius: 20px;
+display: flex;
+flex-direction: column;
+gap: 10px;
+max-width: 600px;
+width: 100%;
 }
 
 #allRatings {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
 }
 
 .dropbtn {
@@ -212,4 +227,14 @@ h2 {
 
   #highestRating {
     padding: 20px;
+  }
+
+  #individualparkimg{
+    max-width: 300px;
+    margin: auto;
+    border-radius: 20px;
+  }
+
+  .checked{
+    color: orange;
   }
