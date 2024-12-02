@@ -9,8 +9,34 @@
 
 
 const mealsElement = document.querySelector("#meals");
+const favorites = document.querySelector(".favorites");
+const searchBtn = document.querySelector("#search");
+const searchTerm = document.querySelector("#search-term");
+
 const localStorageKey = 'mealIds'
+
+mealsElement.innerHTML = "";
 getRandomMeal();
+updateFavoriteMeals();
+
+searchBtn.addEventListener("click", async ()=> {
+    const searchWord = searchTerm.value;
+    const meals = await getMealsBySearch(searchWord);
+    console.log(meals);
+    mealsElement.innerHTML = "";
+    meals.forEach(meal =>{
+        addMeal(meal);
+    })
+});
+
+async function getMealsBySearch(word)
+{
+    const resp = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s='+word);
+    const searchData = await resp.json(); 
+    const meals = searchData.meals; //no [0] bc we dont want only the first item 
+
+    return meals;
+}
 
 async function getRandomMeal()
 {
@@ -21,18 +47,19 @@ async function getRandomMeal()
     const RandomMeal = randomData.meals[0]; //extracting the information, maybe need to use different technique for final project
     console.log(RandomMeal);
 
-    addMeal(RandomMeal);
+    addMeal(RandomMeal,true);
 }
 //need a function to change the meal of the day
 
-function addMeal(mealData) //need to pass an object
+function addMeal(mealData,random=false)
 {
+    console.log(random);
     const meal = document.createElement("div");
     meal.classList.add("meal");
 
     meal.innerHTML =`<div class="meal-header">
-                            <span class="random">Meal of the Day</span>
-                             <img src=${mealData.strMealThumb} alt="">
+                            ${random?`<span class="random">Meal of the Day</span>`:""}
+                            <img src=${mealData.strMealThumb} alt="">
                          </div>
                         <div class="meal-body">
                              <h3>${mealData.strMeal}</h3>
@@ -54,6 +81,7 @@ function addMeal(mealData) //need to pass an object
                     favoriteButton.classList.add("active");
                     addMealToLocalStorage(mealData.idMeal);
                 }
+                updateFavoriteMeals(); //function call inside the event listener, bc goes together with clikcing like
             })
         }
         mealsElement.appendChild(meal);                
@@ -78,4 +106,41 @@ function addMeal(mealData) //need to pass an object
             return [];
         else
             return mealIds;
+    }
+
+    function updateFavoriteMeals()
+    {
+        favorites.innerHTML = "";
+        const favoriteMeals = getMealsFromLocalStorage();
+        favoriteMeals.forEach(async element => {
+            const meal = await getMealById(element);
+            addMealToFavorites(meal);
+        });
+    }
+
+    // below we will access the API 
+
+    async function getMealById(elementId)
+    {
+        const resp = await fetch('https://www.themealdb.com/api/json/v1/1/lookup.php?i='+elementId);
+        const mealData = await resp.json();
+        const meal = mealData.meals[0]; 
+        console.log(meal);
+        return meal;
+    }
+
+    function addMealToFavorites(mealData)
+    {
+        const favoriteMeal = document.createElement('li');
+        favoriteMeal.innerHTML =    `<img id="fav-img" src="${mealData.strMealThumb}" alt="${mealData.strMeal}">
+                                    <span>${mealData.strMeal}</span>
+                                    <button class="clear"><i class="fas fa-window-close"></i></button>`
+
+        const clearBtn = favoriteMeal.querySelector(".clear");
+        clearBtn.addEventListener("click", ()=>{
+            removeMealFromLocalStorage(mealData.idMeal);
+            updateFavoriteMeals();
+        });
+
+        favorites.appendChild(favoriteMeal);
     }
