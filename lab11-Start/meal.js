@@ -15,19 +15,23 @@ const searchTerm = document.querySelector("#search-term");
 
 const localStorageKey = 'mealIds'
 
-mealsElement.innerHTML = "";
-getRandomMeal();
-updateFavoriteMeals();
+//mealsElement.innerHTML = "";
 
-searchBtn.addEventListener("click", async ()=> {
-    const searchWord = searchTerm.value;
-    const meals = await getMealsBySearch(searchWord);
-    console.log(meals);
-    mealsElement.innerHTML = "";
-    meals.forEach(meal =>{
-        addMeal(meal);
-    })
-});
+function initMain()
+{
+    getRandomMeal();
+    updateFavoriteMeals();
+
+    searchBtn.addEventListener("click", async ()=> {
+        const searchWord = searchTerm.value;
+        const meals = await getMealsBySearch(searchWord);
+        console.log(meals);
+        mealsElement.innerHTML = "";
+        meals.forEach(meal =>{
+            addMeal(meal);
+        })
+    });
+}
 
 async function getMealsBySearch(word)
 {
@@ -84,7 +88,12 @@ function addMeal(mealData,random=false)
                 updateFavoriteMeals(); //function call inside the event listener, bc goes together with clikcing like
             })
         }
-        mealsElement.appendChild(meal);                
+        mealsElement.appendChild(meal);   
+        
+        const mealHeader = meal.querySelector(".meal-header");
+        mealHeader.addEventListener("click", () => {
+                openMealDetailsPage(mealData);
+        });
     }
 
     function addMealToLocalStorage(mealId){
@@ -143,4 +152,59 @@ function addMeal(mealData,random=false)
         });
 
         favorites.appendChild(favoriteMeal);
+
+        const favId = favoriteMeal.querySelector("#fav-img")
+        favId.addEventListener("click", () => {
+            openMealDetailsPage(mealData);
+        })
+    }
+
+    function openMealDetailsPage(mealData)
+    {
+        window.open("details.html?mealId="+mealData.idMeal,"_self");
+    }
+
+    function initDetailsPage()
+    {
+        const urlParams = new URLSearchParams(window.location.search);
+        console.log(urlParams);
+        const mealId = urlParams.get('mealId');
+        console.log(mealId);
+
+        showMealDetails(mealId);
+    }
+
+    async function showMealDetails(mealId){
+        let tmpMeal = await getMealById(mealId);
+        console.log(tmpMeal);
+
+        const ingredients = [];
+        for(let i = 0; i<= 20; i++)
+        {
+            if(tmpMeal['strIngredient'+i])
+            ingredients.push(`${tmpMeal['strIngredient'+i]}/${tmpMeal['strMeasure'+i]}`)
+        }
+
+        for(let i = 0; i<ingredients.length; i++)
+        {
+            console.log(ingredients[i]);
+        }
+
+        const mealDetailsContainer = document.querySelector('.meal-container');
+        mealDetailsContainer.innerHTML = 
+        `<a href="meal.html">Home</a>
+        <div class="meal-info">
+            <div>
+                <h1>${tmpMeal.strMeal}</h1>
+                <img src="${tmpMeal.strMealThumb}" alt="${tmpMeal.strMeal}">
+            </div>
+            <div>
+                <p>${tmpMeal.strInstructions}</p>
+                    <ul>
+                        ${ingredients.map(
+                            item => `<li>${item}</li>`).join("")
+                        }
+                    </ul>
+            </div>
+        </div>`;
     }
