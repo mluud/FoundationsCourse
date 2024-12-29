@@ -1,65 +1,30 @@
 
 
-let stars = 
-    document.getElementsByClassName("star");
-let output = 
-    document.getElementById("output");
+let stars = document.getElementsByClassName("star");
+let output = document.getElementById("output");
+let starRatingNbr = 0;
 
-    function gfg(n) {
-      remove();
-      for (let i = 0; i < n; i++) {
-          if (n == 1) cls = "one";
-          else if (n == 2) cls = "two";
-          else if (n == 3) cls = "three";
-          else if (n == 4) cls = "four";
-          else if (n == 5) cls = "five";
-          stars[i].className = "star " + cls;
-      }
-      output.innerText = "Rating is: " + n + "/5";
-  }
+
+function gfg(n) {
+    remove();
+    for (let i = 0; i < n; i++) {
+        if (n == 1) cls = "one";
+        else if (n == 2) cls = "two";
+        else if (n == 3) cls = "three";
+        else if (n == 4) cls = "four";
+        else if (n == 5) cls = "five";
+        stars[i].className = "star " + cls;
+    }
+    starRatingNbr = n;
+}
  
-  function remove() {
+function remove() {
     let i = 0;
     while (i < 5) {
         stars[i].className = "star";
         i++;
     }
 }
-
-// function myFunction() {
-//   document.getElementById("myDropdown").classList.toggle("show");
-// }
-
-// window.onclick = function (event) {
-//   if (!event.target.matches('.dropbtn')) {
-//     var dropdowns = document.getElementsByClassName("dropdown-content");
-//     var i;
-//     for (i = 0; i < dropdowns.length; i++) {
-//       var openDropdown = dropdowns[i];
-//       if (openDropdown.classList.contains('show')) {
-//         openDropdown.classList.remove('show');
-//       }
-//     }
-//   }
-// }
-
-// function myFunction1() {
-//   document.getElementById("myDropdown1").classList.toggle("show");
-// }
-
-// window.onclick = function (event) {
-//   if (!event.target.matches('.dropbtn')) {
-//     var dropdowns = document.getElementsByClassName("dropdown-content");
-//     var i;
-//     for (i = 0; i < dropdowns.length; i++) {
-//       var openDropdown = dropdowns[i];
-//       if (openDropdown.classList.contains('show')) {
-//         openDropdown.classList.remove('show');
-//       }
-//     }
-//   }
-// }
-
 
 
 const parks = [
@@ -138,3 +103,20 @@ document.addEventListener("DOMContentLoaded", (_e) => {
     });
 });
 
+
+let addRating = document.getElementById("rateTheRide")
+
+addRating.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let starRating = document.getElementsByClassName("star");
+
+    if (parksFilter.value === "all" || attractionsFilter.value === "all"){
+        alert("Make sure to fill all the fields!");
+    }
+    else{
+        alert("This form has been successfully submitted! You have rated the ride of  " 
+            + attractionsFilter.value +  " at the " + parksFilter.value + 
+            " park with the rating of " + starRatingNbr+ "/5");
+    }
+});

@@ -64,6 +64,7 @@
     </div>
 </section>
 <section id="addRating">
+    <form id="rateTheRide">
     <h3><center>Rate the ride!</center></h3>
     <div class="filter" id="filterParks">
         <select class="parksFilter" id="parksFilter" name="parksFilter">
@@ -75,43 +76,18 @@
             <option value="all">All attractions</option>
         </select>
     </div>
-    <!-- <div class="dropdown">
-        <button onclick="myFunction1()" class="dropbtn">Choose your park</button>
-        <div id="myDropdown1" class="dropdown-content">
-          <a href="#">Disneyland Paris</a>
-          <a href="#">California Dreaming</a>
-          <a href="#">Tokyo Disney Resort</a>
-        </div>
-      </div>
-    <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">Choose your ride</button>
-        <div id="myDropdown" class="dropdown-content">
-          <a href="#">Avengers Assemble: Flight Force</a>
-          <a href="#">Ratatouille: The Adventure</a>
-          <a href="#">The Twilight Zone Tower of Terror</a>
-        </div>
-      </div> -->
     <p>How did you like the ride?</p>
-        <div>
-            <span onclick="gfg(1)"
-              class="star">★
-        </span>
-        <span onclick="gfg(2)"
-              class="star">★
-        </span>
-        <span onclick="gfg(3)"
-              class="star">★
-        </span>
-        <span onclick="gfg(4)"
-              class="star">★
-        </span>
-        <span onclick="gfg(5)"
-              class="star">★
-        </span>
-        </div>
-        <label for="message">Add a comment!</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
-        <button id="submit" type="submit">Submit</button>
+    <div>
+        <span onclick="gfg(1)" class="star">★</span>
+        <span onclick="gfg(2)" class="star">★</span>
+        <span onclick="gfg(3)" class="star">★</span>
+        <span onclick="gfg(4)" class="star">★</span>
+        <span onclick="gfg(5)" class="star">★</span>
+    </div>
+    <label for="message">Add a comment!</label>
+    <textarea id="message" name="message" rows="4" required></textarea>
+    <button id="submit" type="submit">Submit</button>
+    </form>
 </section>
 </main>
 
