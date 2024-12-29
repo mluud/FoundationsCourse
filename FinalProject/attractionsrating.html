@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <script type="text/javascript" src="attractions.js" defer></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
 <header>
-     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <script type="text/javascript" src="attractions.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>RATETHEPARK</title>
     <nav>
         <ul>
-            <li><a href="./homepage.html">home</a></li>
-            <li><a href="./parks.html">parks</a></li>
-            <li><a href="./attractions.html">attractions</a></li>
-            <li><a href="./attractionsrating.html">rating overview</a></li>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./parks.html">Parks</a></li>
+            <li><a href="./attractions.html">Attractions</a></li>
+            <li><a href="./attractionsrating.html">Rating Overview</a></li>
         </ul>
     </nav>
     <h2>Attractions with the highest rating:</h2>
@@ -62,6 +65,24 @@
 </section>
 <section id="addRating">
     <h3><center>Rate the ride!</center></h3>
+    <div class="filter" id="filterParks">
+        <select class="parksFilter" id="parksFilter" name="parksFilter">
+            <option value="all">All parks</option>
+        </select>
+    </div>
+    <div class="filter" id="filterAttractions">
+        <select class="attractionsFilter" id="attractionsFilter" name="attractionsFilter">
+            <option value="all">All attractions</option>
+        </select>
+    </div>
+    <!-- <div class="dropdown">
+        <button onclick="myFunction1()" class="dropbtn">Choose your park</button>
+        <div id="myDropdown1" class="dropdown-content">
+          <a href="#">Disneyland Paris</a>
+          <a href="#">California Dreaming</a>
+          <a href="#">Tokyo Disney Resort</a>
+        </div>
+      </div>
     <div class="dropdown">
         <button onclick="myFunction()" class="dropbtn">Choose your ride</button>
         <div id="myDropdown" class="dropdown-content">
@@ -69,14 +90,24 @@
           <a href="#">Ratatouille: The Adventure</a>
           <a href="#">The Twilight Zone Tower of Terror</a>
         </div>
-      </div>
+      </div> -->
     <p>How did you like the ride?</p>
         <div>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
+            <span onclick="gfg(1)"
+              class="star">★
+        </span>
+        <span onclick="gfg(2)"
+              class="star">★
+        </span>
+        <span onclick="gfg(3)"
+              class="star">★
+        </span>
+        <span onclick="gfg(4)"
+              class="star">★
+        </span>
+        <span onclick="gfg(5)"
+              class="star">★
+        </span>
         </div>
         <label for="message">Add a comment!</label>
         <textarea id="message" name="message" rows="4" required></textarea>
@@ -86,5 +117,5 @@
 
 <footer>
 </footer>
-
+</body>
 </html>

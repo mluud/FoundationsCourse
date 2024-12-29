@@ -15,10 +15,11 @@ const searchTerm = document.querySelector("#search-term");
 
 const localStorageKey = 'mealIds'
 
-//mealsElement.innerHTML = "";
+
 
 function initMain()
 {
+    mealsElement.innerHTML = "";
     getRandomMeal();
     updateFavoriteMeals();
 

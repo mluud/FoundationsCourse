@@ -19,6 +19,9 @@ main{
 main h1{
     font-size: 100px;
     padding: 80px;
+    display: block;
+    text-align: -webkit-center;
+    unicode-bidi: isolate;
 }
 
 input{
@@ -72,14 +75,19 @@ nav ul li a:hover{
     background-color: #F2DA8B
 }
 
-
-#imageContainer img {
-    max-width: 500px;
-    margin: auto;
+.parkName > h2{
+    display: block;
+    text-align: -webkit-center;
+    unicode-bidi: isolate;
 }
 
 #imageContainer{
     align-items: center;
+}
+
+#imageContainer img {
+    max-width: 500px;
+    margin: auto;
 }
 
 .parkCards{
@@ -137,11 +145,17 @@ h2 {
     margin: auto;
 }
 
-.oneAttractionCard {
+.attractionCard {
     background-color: #F9F5ED;
     padding: 10px;
     border-radius: 20px;
     max-width: 300px;
+}
+
+.attractionTitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .ride-img {
@@ -237,4 +251,70 @@ width: 100%;
 
   .checked{
     color: orange;
+  }
+
+  .attractionHeader{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .attractionHeader .title{
+    justify-self: left;
+  }
+
+  .attractionHeader .filter{
+    display: flex;
+  }
+
+  <-----------------
+  .pagination {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.pagination a {
+    color: #007BFF;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #007BFF;
+    margin: 0 5px;
+    border-radius: 4px;
+}
+.pagination a:hover {
+    background-color: #007BFF;
+    color: white;
+}
+
+.pagination .active {
+    background-color: #007BFF;
+    color: white;
+}
+
+-------------------->
+
+
+.star {
+    font-size: 10vh;
+    cursor: pointer;
+    
+  }
+   
+  .one {
+    color: orange
+  }
+   
+  .two {
+    color: orange
+  }
+   
+  .three {
+    color: orange
+  }
+   
+  .four {
+    color: orange
+  }
+   
+  .five {
+    color: orange
   }

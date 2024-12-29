@@ -1,37 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<header>
-     <meta charset="UTF-8">
+
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>RATETHEPARK</title>
-    <nav>
-        <ul>
-            <li><a href="./homepage.html">home</a></li>
-            <li><a href="./parks.html">parks</a></li>
-            <li><a href="./attractions.html">attractions</a></li>
-            <li><a href="./attractionsrating.html">rating overview</a></li>
-        </ul>
-    </nav>
-</header>
+    <script type="text/javascript" src="parks.js" defer></script>
+</head>
+
 <body>
-    <section class="parks>
-        <div class="parkName">
-        <h2><center></a>Disneyland Paris</a></center></h2>
+    <header>
+
+        <title>RATETHEPARK</title>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./parks.html">Parks</a></li>
+                <li><a href="./attractions.html">Attractions</a></li>
+                <li><a href="./attractionsrating.html">Rating Overview</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="parks">
+        <div class="parkName" >
+            <h2 id="parkNameFull">Disneyland Paris</h2>
         </div>
         <div class="parkCards">
-            <a href="#" class="previousBtn">&#8249;</a>
+            <button class="prev-btn">
+                <i class="fas fa-chevron-left">&#8249;</i>  
+            </button>
             <div id="imageContainer">
-                <img id="park-img" src="https://media.disneylandparis.com/d4th/en-gb/images/n019751_02_2027jul06_world_disneyland-hotel-pink-sky_16-9_tcm752-221019.jpg" alt=""> 
-            </div>     
-            <a href="#" class="nextBtn">&#8250;</a>
-        </div>  
-        <div class="viewAttractions">
-        <button><a href="./individualpark.html">See more!</a></button>
+                <img id="park-img"
+                    src="https://media.disneylandparis.com/d4th/en-gb/images/n019751_02_2027jul06_world_disneyland-hotel-pink-sky_16-9_tcm752-221019.jpg"
+                    alt="">
+            </div>
+            <button class="next-btn">
+                <i class="fas fa-chevron-right">&#8250;</i>  
+            </button>
         </div>
-  </section>
-    
-  <footer>
-    </footer>
+        <div class="viewAttractions">
+            <button><a href="./individualpark.html">See more!</a></button>
+        </div>
+    </section>
+</body>
+
+<!-- <footer>
+</footer> -->
 
 </html>
