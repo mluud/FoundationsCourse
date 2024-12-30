@@ -206,11 +206,7 @@ width: 100%;
     padding: 20px;
   }
 
-  #individualparkimg{
-    max-width: 300px;
-    margin: auto;
-    border-radius: 20px;
-  }
+ 
 
   .checked{
     color: orange;
@@ -281,4 +277,49 @@ width: 100%;
    
   .five {
     color: orange
+  }
+
+
+  .parkOverview {
+    background-color: #F9F5ED;
+    padding: 20px;
+    border-radius: 20px;
+    max-width: 350px;
+    max-height: 5600px;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    gap: 10px;
+}
+
+.parkOverview h2 {
+    font-size: 24pt;
+}
+
+.parkOverview h3 {
+    font-size: 16pt;
+}
+
+.parkOverviewImg{
+    max-width: 300px;
+    margin: auto;
+    border-radius: 20px;
+  }
+
+  #parksOverview {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+    margin: auto;
+  }
+
+  #atrBtn{
+    margin: 40px;
+    padding: 15px;
+    background-color: #F9F5ED;
+    display: flex;
+    justify-self: center;
+    border-radius: 16px;
   }

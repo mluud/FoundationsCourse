@@ -17,6 +17,19 @@ const parks = [
 ];
 
 const attractionList = [];
+const filteredAttractions = [];
+let totalPages = 0 ; 
+const cardsPerPage = 10; // Number of cards to show per page 
+// const dataContainer = document.getElementById('data-container'); 
+const pagination = document.getElementById('pagination'); 
+const prevButton = document.getElementById('prev'); 
+const nextButton = document.getElementById('next'); 
+const pageNumbers = document.getElementById('page-numbers'); 
+const pageLinks = document.querySelectorAll('#page-link'); 
+
+
+// Calculate the total number of pages 
+let currentPage = 1; 
 
 async function getAttractions(park)
 {
@@ -24,7 +37,8 @@ async function getAttractions(park)
     const attractions = (await response.json()).children.filter(child => child.entityType === "ATTRACTION"); 
 
     attractions.forEach(attraction => attractionList.push({name: attraction.name, park: park.name}));
-
+    filteredAttractions.splice(0,filteredAttractions.length);
+    attractionList.forEach(attraction => filteredAttractions.push(attraction));
     return;
 }
 
@@ -50,23 +64,13 @@ function addAttraction(attraction){
 
     attractionContainer.appendChild(attractionElement);  
 }
-const cardsPerPage = 15;
-let startIndex = 0;
-let endIndex = cardsPerPage ;
-let totalPages = Math.ceil(attractionList.length / cardsPerPage);
 
 async function getAndShowAttractions(){
     for( const park of parks){
         await getAttractions(park);
     }
-    attractionList.forEach((attraction,index) => {
-        
-        if(index >=0 && index <cardsPerPage){
-            addAttraction(attraction) 
-        }else{
-            attraction.style.display = 'none'; 
-        }
-    });
+    update(attractionList.splice(0,cardsPerPage))
+    totalPages = Math.ceil(attractionList.length / cardsPerPage);
 }
 getAndShowAttractions();
 
@@ -87,10 +91,13 @@ document.addEventListener("DOMContentLoaded", (_e) => {
         attractionContainer.innerHTML = "";
         parkNameFilter.value = "";
         
-        const filteredAttractions = attractionList.filter(attraction => parkFilter.value === "all" || attraction.park === parkFilter.value);
-        filteredAttractions.forEach(attraction => addAttraction(attraction));
-        console.log("CHQNGE")
-
+        const tempfilteredAttractions = attractionList.filter(attraction => parkFilter.value === "all" || attraction.park === parkFilter.value);
+        console.log(tempfilteredAttractions)
+        filteredAttractions.splice(0,filteredAttractions.length);
+        tempfilteredAttractions.forEach(attraction => filteredAttractions.push(attraction));
+        totalPages = Math.ceil(filteredAttractions.length / cardsPerPage);
+        update(filteredAttractions.splice(0,cardsPerPage))
+        currentPage=1;
     });
 
     
@@ -99,76 +106,59 @@ document.addEventListener("DOMContentLoaded", (_e) => {
         attractionContainer.innerHTML = "";
         parkFilter.value = "all";
 
-        const filteredAttractions = attractionList.filter(attraction => attraction.name.toLowerCase().includes(parkNameFilter.value.toLowerCase()));
-        filteredAttractions.forEach(attraction =>addAttraction(attraction));
-        console.log("INPUT")
-            
+        const tempfilteredAttractions = attractionList.filter(attraction => attraction.name.toLowerCase().includes(parkNameFilter.value.toLowerCase()));
+        console.log(tempfilteredAttractions)
+        filteredAttractions.splice(0,filteredAttractions.length);
+        tempfilteredAttractions.forEach(attraction => filteredAttractions.push(attraction));
+        totalPages = Math.ceil(filteredAttractions.length / cardsPerPage);
+        update(filteredAttractions.splice(0,cardsPerPage))
     });
 
 });
 
-const pagination = document.getElementById('pagination'); 
-const prevButton = document.getElementById('prev'); 
-const nextButton = document.getElementById('next'); 
-const pageNumbers = document.getElementById('page-numbers'); 
-const pageLinks = document.querySelectorAll('.page-link'); 
+function GFG(array, currentPage, pageSize) {
+    const startIndex = (currentPage - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    return array.slice(startIndex, endIndex);
+}
 
-
-
-let currentPage = 1; 
-
-
-function displayPage(page, attractionList) {  
-    attractionList.forEach((card, index) => { 
-		if (index >= startIndex && index < endIndex) { 
-			card.style.display = 'block'; 
-		} else { 
-			card.style.display = 'none'; 
-		} 
-	}); 
-} 
-
-function updatePagination() { 
-    
-	pageNumbers.textContent = 
-		`Page ${currentPage} of ${totalPages}`; 
-	prevButton.disabled = currentPage === 1; 
-	nextButton.disabled = currentPage === totalPages; 
-	pageLinks.forEach((link) => { 
-		const page = parseInt(link.getAttribute('data-page')); 
-		link.classList.toggle('active', page === currentPage); 
-	}); 
-} 
-
-prevButton.addEventListener('click', () => { 
+// Event listener for "Previous" button 
+prevButton.addEventListener('click', () => {
 	if (currentPage > 1) { 
 		currentPage--; 
-		startIndex = (currentPage - 1) * cardsPerPage; 
-	    endIndex = startIndex + cardsPerPage; 
-        totalPages = Math.ceil( attractionList.length/ cardsPerPage);
-    attractionList.forEach((attraction,index) => {
-        if(index >=startIndex && index <endIndex){
-            addAttraction(attraction)
-        }
-    });
+        const currentPageData = GFG(filteredAttractions, currentPage, cardsPerPage);
+        deleteCard()
+        update(currentPageData);
 	} 
-    console.log(currentPage)
 }); 
 
+// Event listener for "Next" button 
 nextButton.addEventListener('click', () => { 
-	if (currentPage < totalPages) { 
+	if (currentPage < totalPages-1) { 
+        console.log(currentPage+"/"+totalPages)
 		currentPage++; 
-		startIndex = (currentPage - 1) * cardsPerPage; 
-	    endIndex = startIndex + cardsPerPage; 
-        totalPages = Math.ceil( attractionList.length/ cardsPerPage);
-    attractionList.forEach((attraction,index) => {
-        if(index >=startIndex && index <endIndex){
-            addAttraction(attraction)
-        }
-    });
-	} 
-    console.log(currentPage)
+        const currentPageData = GFG(filteredAttractions, currentPage, cardsPerPage);
+    	deleteCard()
+        update(currentPageData);
+    } 
 }); 
+
+function deleteCard(){
+    const test = document.querySelector(".attractionInfo")
+    for (let index = 0; index < cardsPerPage; index++) {
+        const test2 = document.querySelector(".attractionCard")
+        try{
+            test.removeChild(test2)}
+        catch{
+            console.log("cant remove")
+        } 
+    } 
+}
+
+function update(cardsList){
+    console.log(cardsList);
+    cardsList.forEach(attraction => addAttraction(attraction));
+}
 
 
 pageLinks.forEach((link) => { 
@@ -177,11 +167,9 @@ pageLinks.forEach((link) => {
 		const page = parseInt(link.getAttribute('data-page')); 
 		if (page !== currentPage) { 
 			currentPage = page; 
-			displayPage(currentPage); 
-			updatePagination(); 
+			const currentPageData = GFG(filteredAttractions, currentPage, cardsPerPage);
+    	    deleteCard()
+            update(currentPageData);
 		} 
 	}); 
 }); 
-
-displayPage(currentPage); 
-updatePagination();
